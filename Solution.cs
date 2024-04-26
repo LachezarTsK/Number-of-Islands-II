@@ -43,9 +43,9 @@ public class Solution
                 int nextRow = row + move[0];
                 int nextColumn = column + move[1];
 
-                if (isInMatrix(nextRow, nextColumn) && matrix[nextRow, nextColumn] == LAND)
+                if (IsInMatrix(nextRow, nextColumn) && matrix[nextRow, nextColumn] == LAND)
                 {
-                    updateIslands(getIndex(row, column), getIndex(nextRow, nextColumn), unionFind);
+                    UpdateIslands(GetIndex(row, column), GetIndex(nextRow, nextColumn), unionFind);
                 }
             }
             numberOfIslandsAtTimeSnapshot.Add(countIslands);
@@ -53,7 +53,7 @@ public class Solution
         return numberOfIslandsAtTimeSnapshot;
     }
 
-    private void updateIslands(int currentIndex, int adjacentIndex, UnionFind unionFind)
+    private void UpdateIslands(int currentIndex, int adjacentIndex, UnionFind unionFind)
     {
         int currentParent = unionFind.FindParent(currentIndex);
         int adjacentParent = unionFind.FindParent(adjacentIndex);
@@ -65,12 +65,12 @@ public class Solution
         }
     }
 
-    private int getIndex(int row, int column)
+    private int GetIndex(int row, int column)
     {
         return row * columns + column;
     }
 
-    private bool isInMatrix(int row, int column)
+    private bool IsInMatrix(int row, int column)
     {
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
